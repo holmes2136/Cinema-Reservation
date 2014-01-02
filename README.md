@@ -3,7 +3,6 @@ Cinema-Reservation
 
 A easy sample about how to implement the base of booking ,
 
-such as the animation of booking
 
 TODO:
 
