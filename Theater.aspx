@@ -8,7 +8,9 @@
     
 
 <script  type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-
+<link rel="stylesheet" type="text/css" href="css/jquery.countdown.css"> 
+<script type="text/javascript" src="js/jquery.countdown-zh-TW.js"></script>
+<script type="text/javascript" src="js/jquery.countdown.js"></script>
 
 <style type="text/css">
 #holder{	
@@ -151,12 +153,28 @@ $(function(){
 });
 </script>
 
+<script type="text/javascript">
+$(function () {
+	var austDay = new Date();
+	austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
+	//austDay = Date
+	$('#defaultCountdown').countdown({until: +5,expiryUrl:'Expires.html'});
+	$('#year').text(austDay.getFullYear());
+});
+</script>
+
 </head>
 
   
   
 <body>
-<div  id="holder">
+
+
+<div id="container">
+
+
+<div  id="holder" style="float:left">
+
 
 <div id="place" style="float:left;">
 <div><img src="imgs/screen.png"  style="width:280px"/></div>
@@ -194,6 +212,7 @@ $(function(){
 
 
 
+
 <div style="width:300px;text-align:center;overflow:auto"> 
 	<ul id="seatDescription">
     <li style="background:url('imgs/available_seat_img.gif') no-repeat scroll 0 0 transparent;">Available Seat</li>
@@ -204,6 +223,10 @@ $(function(){
 	       style="margin-top:15px"/>
       </div>
 
+
+</div>
+
+<div id="defaultCountdown" style="float:left;margin-left:20px;width:200px"></div>
 
 </div>
 
