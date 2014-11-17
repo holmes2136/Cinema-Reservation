@@ -14,12 +14,7 @@
 
     //點擊每個位置時
     $('.' + settings.seatCss).click(function () {
-        var $hasSelected = $(".selectingSeat"),
-            hasSelectedLen = $hasSelected.length,
-            res_constraint = $("#txt_reservation_constraint").val();
-
-        if (hasSelectedLen > res_constraint) { alert('訂票數量不能超過' + res_constraint + "張!"); return; }
-
+     
         if ($(this).attr('class') == settings.seatCss) {
             $(this).toggleClass(settings.selectingSeatCss);
         } else {
@@ -30,8 +25,13 @@
 
     //正常選位
     $("#reservation").click(function () {
-        var col, row;
-        var seatId;
+        var col, row,seatId,
+            $hasSelected = $(".selectingSeat"),
+            hasSelectedLen = $hasSelected.length,
+            res_constraint = $("#txt_reservation_constraint").val();
+
+        if (hasSelectedLen > res_constraint) { alert('訂票數量不能超過' + res_constraint + "張!"); return; }
+
         $.each($('#place li.' + settings.selectingSeatCss), function (index, value) {
 
             col = $(this).attr('col');
