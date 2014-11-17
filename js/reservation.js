@@ -14,7 +14,7 @@
 
     //點擊每個位置時
     $('.' + settings.seatCss).click(function () {
-     
+
         if ($(this).attr('class') == settings.seatCss) {
             $(this).toggleClass(settings.selectingSeatCss);
         } else {
@@ -25,12 +25,16 @@
 
     //正常選位
     $("#reservation").click(function () {
-        var col, row,seatId,
+        var col, row, seatId,
             $hasSelected = $(".selectingSeat"),
             hasSelectedLen = $hasSelected.length,
             res_constraint = $("#txt_reservation_constraint").val();
 
         if (hasSelectedLen > res_constraint) { alert('訂票數量不能超過' + res_constraint + "張!"); return; }
+
+        var result = preventCrossSeat();
+
+        if (result === false) return;
 
         $.each($('#place li.' + settings.selectingSeatCss), function (index, value) {
 
@@ -53,6 +57,36 @@
         $($seats[radom_number]).removeClass(settings.seatCss).addClass(settings.selectedSeatCss);
 
     });
+
+
+    //避免選取跨位的座位
+    function preventCrossSeat() {
+        var $selectedSeat = $(".selectingSeat"),
+             selectedSeatArray = [],
+             result = true;
+
+        $selectedSeat.each(function (index, val) {
+            var $seat = $(val);
+            selectedSeatArray.push($seat.attr('col'));
+        });
+
+        $.each(selectedSeatArray, function (index, val) {
+            var first = val;
+            var next = !!selectedSeatArray[index + 1] ? selectedSeatArray[index + 1] : 0;
+            var number;
+
+            number = next - first;
+
+            if (number > 1) {
+                result = false;
+                alert('不能選取跨位的座位');
+                return false;
+            }
+        });
+
+        return result;
+    }
+
 
     //預約動作
     function TakeReservation(seatId, col, row) {

@@ -88,7 +88,7 @@
 
 </body>       
     
-    <script  type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script  type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="js/jquery.countdown-zh-TW.js"></script>
     <script type="text/javascript" src="js/jquery.countdown.js"></script>
     <script type="text/javascript" src="js/reservation.js"></script>
