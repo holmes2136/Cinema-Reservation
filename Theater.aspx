@@ -73,7 +73,16 @@
 
 </div>
 
-<div id="defaultCountdown" style="float:left;margin-left:20px;width:200px"></div>
+<div id="settings">
+    <div id="defaultCountdown" style="float:left;margin-left:20px;width:200px"></div>
+
+    <div id="Div1" style="float:left;margin-left:20px;width:200px;">
+    <label>訂票張數限制</label><input id="txt_reservation_constraint" type="text" value="4"/>
+</div>
+</div>
+
+
+
 
 </div>
 

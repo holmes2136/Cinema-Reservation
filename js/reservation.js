@@ -1,27 +1,32 @@
-﻿$(function(){
+﻿$(function () {
 
     var settings = {
-		rows: 5,
-		cols: 15,
-		rowCssPrefix: 'row-',
-		colCssPrefix: 'col-',
-		seatWidth: 20,
-		seatHeight: 20,
-		seatCss: 'seat',
-		selectedSeatCss: 'selectedSeat',
-		selectingSeatCss: 'selectingSeat'
-	};
-	
+        rows: 5,
+        cols: 15,
+        rowCssPrefix: 'row-',
+        colCssPrefix: 'col-',
+        seatWidth: 20,
+        seatHeight: 20,
+        seatCss: 'seat',
+        selectedSeatCss: 'selectedSeat',
+        selectingSeatCss: 'selectingSeat'
+    };
+
     //點擊每個位置時
-	$('.' + settings.seatCss).click(function () {
-        
-        if($(this).attr('class')==settings.seatCss){
+    $('.' + settings.seatCss).click(function () {
+        var $hasSelected = $(".selectingSeat"),
+            hasSelectedLen = $hasSelected.length,
+            res_constraint = $("#txt_reservation_constraint").val();
+
+        if (hasSelectedLen > res_constraint) { alert('訂票數量不能超過' + res_constraint + "張!"); return; }
+
+        if ($(this).attr('class') == settings.seatCss) {
             $(this).toggleClass(settings.selectingSeatCss);
-        }else{
+        } else {
             $(this).toggleClass(settings.seatCss);
         }
-		
-	});
+
+    });
 
     //正常選位
     $("#reservation").click(function () {
@@ -48,17 +53,17 @@
         $($seats[radom_number]).removeClass(settings.seatCss).addClass(settings.selectedSeatCss);
 
     });
-	
+
     //預約動作
-	function TakeReservation(seatId,col,row){
-	    $.ajax({
-            type:"GET",
+    function TakeReservation(seatId, col, row) {
+        $.ajax({
+            type: "GET",
             url: "Webservice/Reservation_do.ashx",
-            data: { seatId: seatId, col: col,row:row }
-        }).done(function(msg) {
-            alert( "訂位: " + msg.Msg );
+            data: { seatId: seatId, col: col, row: row }
+        }).done(function (msg) {
+            alert("訂位: " + msg.Msg);
         });
 
-	}
+    }
 
 });
