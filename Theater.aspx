@@ -5,167 +5,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Theater</title>
-    
-
-<script  type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <link rel="stylesheet" type="text/css" href="css/jquery.countdown.css"> 
-<script type="text/javascript" src="js/jquery.countdown-zh-TW.js"></script>
-<script type="text/javascript" src="js/jquery.countdown.js"></script>
-
-<style type="text/css">
-#holder{	
- height:300px;	 
- width:330px;
- background-color:#F5F5F5;
- border:1px solid #A4A4A4;
- margin-left:10px;
- padding-left:25px;
-}
-	
-#place {
- position:relative;
- margin:7px;
- width:330px;
- height:300px;
-}
-	 
-#place a{
- font-size:0.6em;
-}
-	 
-#place li
-{
- list-style: none outside none;
- position: absolute;   
-}    
-     
-#place li:hover
-{
- background-color:yellow;      
-} 
-     
-#place .seat{
- background:url("imgs/available_seat_img.gif") no-repeat scroll 0 0 transparent;
- height:20px;
- width:20px;
- display:block;	 
-}
-	 
-.selectedSeat
-{ 
- background-image:url("imgs/booked_seat_img.gif");      	 
-}
-      
-.selectingSeat
-{ 
-  background-image:url("imgs/selected_seat_img.gif");      	 
-}
-      
-#place.row-3, #place .row-4{
-  margin-top:10px;
-}
-
-#seatDescription{
- padding:0px;
- float:left;
- width:200px;
-}
-
-#seatDescription li
-{
- vertical-align:middle;	  
- list-style: none outside none;
- padding-left:35px;
- height:35px;
- float:left;
-}
-
-#seatDescription{
- padding:0px;
-}
-
-#seatDescription li{
-  verticle-align:middle;	  
-  list-style: none outside none;
-  padding-left:35px;
-  height:35px;
-  float:left;
-}
-
-</style>
-    
-    
-
-<script type="text/javascript">
-
-$(function(){
-
-    var settings = {
-		rows: 5,
-		cols: 15,
-		rowCssPrefix: 'row-',
-		colCssPrefix: 'col-',
-		seatWidth: 20,
-		seatHeight: 20,
-		seatCss: 'seat',
-		selectedSeatCss: 'selectedSeat',
-		selectingSeatCss: 'selectingSeat'
-	};
-	
-	$('.' + settings.seatCss).click(function () {
-        
-        if($(this).attr('class')==settings.seatCss){
-            $(this).toggleClass(settings.selectingSeatCss);
-        }else{
-            $(this).toggleClass(settings.seatCss);
-        }
-		
-	});
-	
-	$("#reservation").click(function(){
-	
-	    var col,row;
-        var seatId;
-        
-	    $.each($('#place li.' + settings.selectingSeatCss),function (index, value){
-	        
-	        col = $(this).attr('col');
-	        row = $(this).attr('row');
-	        
-	        $(this).addClass(settings.selectedSeatCss);
-			$(this).removeClass(settings.selectingSeatCss);
-			TakeReservation(seatId,col,row);
-	    });
-	   
-	})
-	
-	function TakeReservation(seatId,col,row){
-	    $.ajax({
-            type:"GET",
-            url: "Webservice/Reservation_do.ashx",
-            data: { seatId: seatId, col: col,row:row }
-        }).done(function(msg) {
-            alert( "訂位: " + msg.Msg );
-        });
-
-	}
-
-});
-</script>
-
-<script type="text/javascript">
-$(function () {
-	var austDay = new Date();
-	austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
-	//austDay = Date
-	$('#defaultCountdown').countdown({until: +5,expiryUrl:'Expires.html'});
-	$('#year').text(austDay.getFullYear());
-});
-</script>
-
+<link rel="stylesheet" type="text/css" href="css/reservation.css"> 
 </head>
 
-  
   
 <body>
 
@@ -219,7 +62,11 @@ $(function () {
     <li style="background:url('imgs/booked_seat_img.gif') no-repeat scroll 0 0 transparent;">Booked Seat</li>
     <li style="background:url('imgs/selected_seat_img.gif') no-repeat scroll 0 0 transparent;">Selected Seat</li>
 	</ul>	  	<input type="button" id="reservation" 
-	       name="reservation" value="訂位"
+	       value="訂位"
+	       style="margin-top:15px"/>
+
+    <input type="button" id="btn_random_reservation" 
+	       value="隨機訂位"
 	       style="margin-top:15px"/>
       </div>
 
@@ -230,5 +77,25 @@ $(function () {
 
 </div>
 
-</body>        
+</body>       
+    
+    <script  type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/jquery.countdown-zh-TW.js"></script>
+    <script type="text/javascript" src="js/jquery.countdown.js"></script>
+    <script type="text/javascript" src="js/reservation.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            var austDay = new Date();
+            austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
+            //austDay = Date
+            $('#defaultCountdown').countdown({ until: +1000, expiryUrl: 'Expires.html' });
+            $('#year').text(austDay.getFullYear());
+        });
+
+      
+
+
+    </script>
+ 
 </html>

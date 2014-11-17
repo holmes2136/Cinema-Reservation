@@ -1,0 +1,78 @@
+﻿#holder{	
+ height:300px;	 
+ width:330px;
+ background-color:#F5F5F5;
+ border:1px solid #A4A4A4;
+ margin-left:10px;
+ padding-left:25px;
+}
+	
+#place {
+ position:relative;
+ margin:7px;
+ width:330px;
+ height:300px;
+}
+	 
+#place a{
+ font-size:0.6em;
+}
+	 
+#place li
+{
+ list-style: none outside none;
+ position: absolute;   
+}    
+     
+#place li:hover
+{
+ background-color:yellow;      
+} 
+     
+#place .seat{
+ background:url("../imgs/available_seat_img.gif") no-repeat scroll 0 0 transparent;
+ height:20px;
+ width:20px;
+ display:block;	 
+}
+	 
+.selectedSeat
+{ 
+ background-image:url("../imgs/booked_seat_img.gif");      	 
+}
+      
+.selectingSeat
+{ 
+  background-image:url("../imgs/selected_seat_img.gif");      	 
+}
+      
+#place.row-3, #place .row-4{
+  margin-top:10px;
+}
+
+#seatDescription{
+ padding:0px;
+ float:left;
+ width:200px;
+}
+
+#seatDescription li
+{
+ vertical-align:middle;	  
+ list-style: none outside none;
+ padding-left:35px;
+ height:35px;
+ float:left;
+}
+
+#seatDescription{
+ padding:0px;
+}
+
+#seatDescription li{
+  verticle-align:middle;	  
+  list-style: none outside none;
+  padding-left:35px;
+  height:35px;
+  float:left;
+}
