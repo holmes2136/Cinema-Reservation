@@ -8,10 +8,9 @@ TODO:
 
 ```
 (1) cross seat problem
-(2) set the limit of booking
-(3) basket function
-(4) different ticket design
-(5) seat No such as A27 etc..
+(2) basket function
+(3) different ticket design
+(4) seat No such as A27 etc..
 
 ```
 
