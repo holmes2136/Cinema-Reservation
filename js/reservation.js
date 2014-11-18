@@ -12,11 +12,20 @@
         selectingSeatCss: 'selectingSeat'
     };
 
+
+    //初始化
+    //若有已經訂位的位置,則需要預設顏色
+    function init() {
+
+    }
+
+
     //點擊每個位置時
-    $('.' + settings.seatCss).click(function () {
+    $('.' + settings.seatCss).dblclick(function () {
 
         if ($(this).attr('class') == settings.seatCss) {
-            $(this).toggleClass(settings.selectingSeatCss);
+            $(this).removeClass(settings.seatCss)
+                   .toggleClass(settings.selectingSeatCss);
         } else {
             $(this).toggleClass(settings.seatCss);
         }
