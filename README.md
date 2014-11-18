@@ -7,10 +7,10 @@ A easy sample about how to implement the base of booking ,
 TODO:
 
 ```
-(1) cross seat problem
-(2) basket function
-(3) different ticket design
-(4) seat No such as A27 etc..
+(1) basket
+(2) different ticket design
+(3) seat No such as A27 etc..
+ 
 
 ```
 
