@@ -10,7 +10,7 @@ TODO:
 (1) basket
 (2) different ticket design
 (3) seat No such as A27 etc..
- 
+(4) 選擇與票數相同的座位數量
 
 ```
 
